@@ -1,32 +1,29 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <link href="css/fonts.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" type="text/css" href="css/style.css" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/assets/gvl-dark.svg">
-    <link rel="icon" type="image/png" sizes="32x32" href="/assets/gvl-dark.svg">
-    <link rel="icon" type="image/png" sizes="16x16" href="/assets/gvl-dark.svg">
-    <link rel="manifest" href="/site.webmanifest">
-    <title> USC Geometry, Vision, and Learning Lab </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/fancy.css" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/gvl.svg">
+    <title>Research | PSI Lab USC</title>
 </head>
 
 <body>
-    <header id="header" style="display:flex; justify-content: space-between; padding-left:10px;padding-right:10px;">
-        <a href="index.html"><img style="width: 35px;height:35px;" src="assets/gvl.svg" /></a>
-        <div style="width: calc(var(--width1)/2); display:flex; justify-content: space-between;">
+    <header id="header">
+        <a href="index.html"><img style="height:35px;" src="assets/gvl.svg" alt="Logo" /></a>
+        <nav class="nav-links">
             <a href="index.html">Home</a>
             <a href="lab.html">Lab</a>
-            <a href="research.html" style="color:var(--red1);font-weight: 600;">Research</a>
+            <a href="research.html" class="active">Research</a>
             <a href="resources.html">Resources</a>
             <a href="contact.html">Contact</a>
-        </div>
+        </nav>
     </header>
-    <div class="section" id="publications" style="padding: 50px 30px 10px 30px;">
 
-    </div>
+    <div class="section" id="publications"></div>
+
     <script>
+
         let publications = [
             {
                 "name": "VectorMapNet: End-to-End Vectorized HD Map Learning",
@@ -179,9 +176,9 @@
                 "name": "A Language Agent for Autonomous Driving",
                 "authors": "Jiageng Mao*, Junjie Ye*, Yuxi Qian, Marco Pavone, Yue Wang",
                 "conference": "COLM 2024",
-                "webpage": "https://usc-gvl.github.io/Agent-Driver/",
+                "webpage": "https://physical-superintelligence-lab.github.io/Agent-Driver/",
                 "paper": "https://arxiv.org/pdf/2311.10813",
-                "code": "https://github.com/USC-GVL/Agent-Driver",
+                "code": "https://github.com/physical-superintelligence-lab/Agent-Driver",
                 "thumbnail": "assets/papers/agent-driver.png"
             },
             {
@@ -370,7 +367,7 @@
                 "name": "Learning from Massive Human Videos for Universal Humanoid Pose Control",
                 "authors": "Jiageng Mao, Siheng Zhao, Siqi Song, Tianheng Shi, Junjie Ye, Mingtong Zhang, Haoran Geng, Jitendra Malik, Vitor Campagnolo Guizilini, Yue Wang",
                 "conference": "Humanoid 2025",
-                "webpage": "https://usc-gvl.github.io/UH-1/",
+                "webpage": "https://physical-superintelligence-lab.github.io/UH-1/",
                 "paper": "https://arxiv.org/abs/2412.14172",
                 "code": "https://github.com/sihengz02/UH-1",
                 "thumbnail": "assets/papers/uh1.png"
@@ -388,53 +385,55 @@
                 "name": "Robot Learning from Any Images",
                 "authors": "Siheng Zhao*, Jiageng Mao*, Wei Chow, Zeyu Shangguan, Tianheng Shi, Rong Xue, Yuxi Zheng, Yijia Weng, Yang You, Daniel Seita, Leonidas Guibas, Sergey Zakharov, Vitor Campagnolo Guizilini, Yue Wang",
                 "conference": "CoRL 2025",
-                "webpage": "",
-                "paper": "",
-                "code": "",
+                "webpage": "https://sihengz02.github.io/RoLA/",
+                "paper": "https://arxiv.org/abs/2509.22970",
+                "code": "https://github.com/PointsCoder/OpenReal2Sim",
                 "thumbnail": "assets/papers/rola.png"
             },
-        ]
+        ];
 
         let section = document.getElementById("publications");
+        
         publications.forEach(publication => {
             let name = publication["name"];
             let authors = publication["authors"];
             let conference = publication["conference"];
-            let webpage = publication["webpage"] ? `<a href="${publication["webpage"]}">Webpage</a>` : "";;
+            let note = publication["note"] ? publication["note"] : "";
+            
+            // Highlight "Spotlight" / "Oral"
+            if (conference.includes("Spotlight")) conference = conference.replace("Spotlight", `<span style="color:var(--accent); font-weight: bold;">Spotlight</span>`);
+            if (conference.includes("Oral")) conference = conference.replace("Oral", `<span style="color:var(--accent); font-weight: bold;">Oral</span>`);
+
+            let webpage = publication["webpage"] ? `<a href="${publication["webpage"]}">Webpage</a>` : "";
             let code = publication["code"] ? `<a href="${publication["code"]}">Code</a>` : "";
             let paper = publication["paper"] ? `<a href="${publication["paper"]}">Paper</a>` : "";
-            let thumbnail = publication["thumbnail"];
-            let note = publication["note"] ? publication["note"] : "";
-            // Highlight "Spotlight" "Oral" in red
-            if (conference.includes("Spotlight")) {
-                conference = conference.replace("Spotlight", `<span style="color: #ffb61e; font-weight: bold;">Spotlight</span>`);
-            }
-            if (conference.includes("Oral")) {
-               conference = conference.replace("Oral", `<span style="color: #ffb61e; font-weight: bold;">Oral</span>`);
-            }
-            let thumbnail_node = thumbnail.includes("mp4") ?
-                `<video style="margin-right: 15px; border-radius: 5px;" width=140px height=auto autoplay loop muted>
-                <source src="${thumbnail}" type="video/mp4">
-            </video>` :
-                `<img src="${thumbnail}" style="width: 140px; margin-right: 15px; border-radius: 5px;" />`;
-            section.insertAdjacentHTML('afterbegin',
-                `
-                <div style="padding-bottom: 30px; display:flex;">
-                    <a href="${publication["webpage"] || '#'}">
+            
+            let thumbnail_node = publication["thumbnail"].includes("mp4") ?
+                `<video autoplay loop muted playsinline><source src="${publication["thumbnail"]}" type="video/mp4"></video>` :
+                `<img src="${publication["thumbnail"]}" alt="${name}" />`;
+
+            // --- NEW FANCY HTML STRUCTURE ---
+            // Wraps item in 'fancy-card pub-item'
+            section.insertAdjacentHTML('afterbegin', `
+                <div class="fancy-card pub-item">
+                    <a href="${publication["webpage"] || '#'}" class="pub-thumb">
                         ${thumbnail_node}
                     </a>
-                    <div>
-                        <a href="${publication["webpage"] || '#'}"> <b>${name}</b> </a>
-                        <p> ${authors}</p>
-                        <p> ${conference}</p>
-                        <p style="color:#ffb61e;"> ${note}</p>
-                        ${[webpage, paper, code].filter(link => link).join(", ")}
+                    <div class="pub-info">
+                        <a href="${publication["webpage"] || '#'}" style="text-decoration:none;">
+                            <b>${name}</b>
+                        </a>
+                        <p style="color:#64748B;">${authors}</p>
+                        <p>${conference}</p>
+                        <p style="color:var(--primary); font-weight:500;">${note}</p>
+                        <div class="pub-links">
+                            ${[webpage, paper, code].filter(link => link).join("")}
+                        </div>
                     </div>
                 </div>
-                `);
+            `);
         });
         section.insertAdjacentHTML('afterbegin', `<h1>Research</h1>`);
-    </script>
+        </script>
 </body>
-
 </html>

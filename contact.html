@@ -1,52 +1,98 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <meta charset="UTF-8" />
-    <link href="css/fonts.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" type="text/css" href="css/style.css" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/assets/gvl-dark.svg">
-    <link rel="icon" type="image/png" sizes="32x32" href="/assets/gvl-dark.svg">
-    <link rel="icon" type="image/png" sizes="16x16" href="/assets/gvl-dark.svg">
-    <link rel="manifest" href="/site.webmanifest">
-    <title> USC Geometry, Vision, and Learning Lab </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/fancy.css" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/gvl.svg">
+    <title>Contact | PSI Lab</title>
+    
+    <style>
+        /* Page-specific layout */
+        .contact-layout {
+            display: flex;
+            gap: 50px;
+            align-items: flex-start;
+            margin-top: 30px;
+        }
+        
+        .contact-info { flex: 1; }
+        
+        .contact-image { 
+            flex: 0.8; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center;
+            padding: 20px;
+        }
+
+        .contact-image img {
+            width: 100%;
+            max-width: 350px;
+            opacity: 0.9;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .contact-layout { flex-direction: column-reverse; }
+            .contact-image { width: 100%; }
+        }
+    </style>
 </head>
 
 <body>
-    <header id="header" style="display:flex; justify-content: space-between; padding-left:10px;padding-right:10px;">
-        <a href="index.html"><img style="width: 35px;height:35px;" src="assets/gvl.svg" /></a>
-        <div style="width: calc(var(--width1)/2); display:flex; justify-content: space-between;">
+    <header id="header">
+        <a href="index.html"><img style="height:35px;" src="assets/gvl.svg" alt="Logo" /></a>
+        <nav class="nav-links">
             <a href="index.html">Home</a>
             <a href="lab.html">Lab</a>
             <a href="research.html">Research</a>
             <a href="resources.html">Resources</a>
-            <a href="contact.html" style="color:var(--red1);font-weight: 600;">Contact</a>
-        </div>
+            <a href="contact.html" class="active">Contact</a>
+        </nav>
     </header>
-    <div class="profile" style="display:flex;padding: 50px 30px 10px 30px; margin-top:30px;">
-        <div style="margin-right:20px;">
-            <h1>Contact</h1>
 
-            <p>
-                We are located in the <a href="https://www.cs.usc.edu/">Thomas Lord Department of Computer Science</a> at the University of Southern California.
-            <br><br>
-                We are looking to hire multiple PhDs/visiting students. In particular, we welcome students from marginalized groups. We firmly support <a href="https://viterbischool.usc.edu/diversity-equity-inclusion/">Viterbi school's DEI initiative</a> to contribute to diversity. 
-            <br><br>
-                For PhD applicants, please mention Prof. Yue Wang in your application. Interested candidates for visiting positions can fill <a href="https://docs.google.com/forms/d/e/1FAIpQLSe2WTNyMxv4wkezAxDB5qqiIRhEb5bkB0b9W4Njuib1dUpmbw/viewform">this form</a> and we will respond as soon as we find a good fit.
-            </p>
-            <br>
-            <p style="color:var(--red1)">
-                Ginsburg Hall, Los Angeles, CA 90089
-            </p>
-            <br>
-            <a href="mailto:yue.w@usc.edu">
-                yue.w at usc dot edu
-            </a>
+    <div class="section">
+        <h1>Contact</h1>
+
+        <div class="contact-layout">
+            
+            <div class="contact-info">
+                <p style="font-size: 1.1rem; margin-bottom: 30px;">
+                    We are located in the <a href="https://www.cs.usc.edu/" style="font-weight:600;">Thomas Lord Department of Computer Science</a> at the University of Southern California.
+                </p>
+
+                <div class="fancy-card" style="border-left: 5px solid var(--accent);">
+                    <h3 style="margin-top: 0; color: var(--accent);">Join the Lab</h3>
+                    <p>
+                        We are looking to hire multiple PhDs/visiting students. In particular, we welcome students from marginalized groups. We firmly support <a href="https://viterbischool.usc.edu/diversity-equity-inclusion/">Viterbi school's DEI initiative</a> to contribute to diversity.
+                    </p>
+                    <p style="margin-bottom: 0;">
+                        For PhD applicants, please mention <b>Prof. Yue Wang</b> in your application. Interested candidates for internship positions can refer to <a href="https://x.com/yuewang314/status/1956452831499804857" style="font-weight:600;">this job post</a> and we will respond as soon as we find a good fit.
+                    </p>
+                </div>
+
+                <div style="margin-top: 40px;">
+                    <h3 style="margin-bottom: 10px;">Address</h3>
+                    <p style="font-size: 1.1rem; color: var(--text-main);">
+                        Ginsburg Hall<br>
+                        Los Angeles, CA 90089
+                    </p>
+
+                    <h3 style="margin-bottom: 10px; margin-top: 30px;">Email</h3>
+                    <a href="mailto:yue.w@usc.edu" style="font-size: 1.2rem; font-weight: 700;">
+                        yue.w@usc.edu
+                    </a>
+                </div>
+            </div>
+
+            <div class="contact-image">
+                <img src="assets/gvl.svg" alt="Lab Logo" />
+            </div>
+
         </div>
-        <img src="assets/gvl.svg" style="width:50%;" />
     </div>
-    <script>
-    </script>
-</body>
 
+</body>
 </html>

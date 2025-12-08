@@ -1,187 +1,335 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <meta charset="UTF-8" />
-    <link href="css/fonts.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" type="text/css" href="css/style.css" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/assets/gvl-dark.svg">
-    <link rel="icon" type="image/png" sizes="32x32" href="/assets/gvl-dark.svg">
-    <link rel="icon" type="image/png" sizes="16x16" href="/assets/gvl-dark.svg">
-    <link rel="manifest" href="/site.webmanifest">
-    <title> USC Geometry, Vision, and Learning Lab </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/fancy.css" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/gvl.svg">
+    <title>Physical Superintelligence Lab</title>
+
+    <style>
+        /* --- PAGE SPECIFIC STYLES (HOME) --- */
+        
+        /* Hero Section Layout */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 20px;
+            gap: 40px;
+        }
+
+        .hero-text { flex: 1.2; }
+        .hero-image { flex: 0.8; display: flex; justify-content: center; }
+        .hero-image img { width: 100%; max-width: 380px; }
+
+        .hero-title {
+            font-size: 4rem; /* Big & Bold */
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            color: var(--text-head);
+            letter-spacing: -0.02em;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, var(--primary) 0%, #60A5FA 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-desc {
+            font-size: 1.1rem;
+            color: var(--text-main);
+            margin-bottom: 30px;
+            max-width: 650px;
+        }
+
+        .hero-desc b { color: var(--text-head); }
+
+        /* Buttons */
+        .social-links { display: flex; gap: 15px; }
+        .btn {
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            background-color: white;
+            border: 1px solid #E2E8F0;
+            color: var(--primary);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            transition: all 0.2s ease;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(37, 99, 235, 0.15);
+            border-color: var(--primary);
+            color: var(--primary-dark);
+        }
+
+        /* News Section */
+        .news-container {
+            max-width: 1000px;
+            margin: 0 auto 80px auto;
+            padding: 0 20px;
+        }
+
+        .news-scroll {
+            max-height: 450px;
+            overflow-y: auto;
+            padding: 5px;
+            padding-right: 15px; /* Space for scrollbar */
+        }
+        /* Custom Scrollbar */
+        .news-scroll::-webkit-scrollbar { width: 6px; }
+        .news-scroll::-webkit-scrollbar-thumb { background-color: #CBD5E1; border-radius: 10px; }
+
+        /* Specific News Card Style */
+        .news-card {
+            display: flex;
+            align-items: flex-start;
+            background: var(--bg-card);
+            margin-bottom: 12px;
+            padding: 16px;
+            border-radius: 12px;
+            border: 1px solid #E2E8F0;
+            transition: all 0.2s ease;
+        }
+        .news-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 15px -3px rgba(0, 0, 0, 0.05);
+            border-color: var(--primary);
+        }
+        
+        .news-date {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 0.85rem;
+            color: var(--primary);
+            background-color: #EFF6FF;
+            padding: 5px 10px;
+            border-radius: 6px;
+            margin-right: 15px;
+            min-width: 85px;
+            text-align: center;
+            flex-shrink: 0;
+            margin-top: 2px; /* Visual alignment */
+        }
+
+        .news-content { font-size: 0.95rem; }
+        .highlight-red { color: var(--accent); font-weight: 600; }
+        .highlight-blue { color: var(--primary); font-weight: 600; }
+
+        .divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #CBD5E1, transparent);
+            margin: 40px 0;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .hero { flex-direction: column-reverse; text-align: center; margin-top: 30px; }
+            .hero-title { font-size: 2.8rem; }
+            .social-links { justify-content: center; }
+            .news-card { flex-direction: column; }
+            .news-date { margin-bottom: 8px; }
+        }
+    </style>
 </head>
 
 <body>
-    <header id="header" style="display:flex; justify-content: space-between; padding-left:10px;padding-right:10px;">
-        <a href="index.html"><img style="width: 35px;height:35px;" src="assets/gvl.svg" /></a>
-        <div style="width: calc(var(--width1)/2); display:flex; justify-content: space-between;">
-            <a href="index.html" style="color:var(--red1);font-weight: 600;">Home</a>
+    <header id="header">
+        <a href="index.html"><img style="height:35px;" src="assets/gvl.svg" alt="Logo" /></a>
+        <nav class="nav-links">
+            <a href="index.html" class="active">Home</a>
             <a href="lab.html">Lab</a>
             <a href="research.html">Research</a>
             <a href="resources.html">Resources</a>
             <a href="contact.html">Contact</a>
-        </div>
+        </nav>
     </header>
 
-    <div style="display: flex; overflow:visible; margin-bottom: 7em; padding-top: 90px;">
-        <div style="width:calc(var(--width1)*0.55);">
-            <div style="display:flex;">
-                <p style="font-size:60px; font-weight: 700; line-height: 1; color:var(--red1); margin-left: 0px;">
-                    USC
-                    <br>
-                    Geometry,
-                    <br>
-                    Vision, and
-                    <br>
-                    Learning Lab
-                </p>
+    <div class="hero">
+        <div class="hero-text">
+            <h1 class="hero-title">
+                Physical<br>
+                <span class="gradient-text">Superintelligence</span><br>
+                (PSI) Lab
+            </h1>
+
+            <div class="hero-desc">
+                The <b>Physical Superintelligence (PSI) Lab</b> at USC develops next-generation robotic systems grounded in large-scale data, foundation models, and real-world deployment.
+                <br><br>
+                We build multimodal data engines, generative training pipelines, and advanced visuomotor policies for humanoids and manipulators. Our work spans <b>3D scene understanding</b>, <b>whole-body humanoid control</b>, and <b>dexterous manipulation</b>, tightly linking ML algorithms with real hardware.
+                <br><br>
+                Our goal is to create physical AI agents that can operate safely and autonomously in everyday human environments.
             </div>
 
-            <p>
-                <br>
-                The <b>Geometry, Vision, and Learning (GVL) Laboratory</b> at the University of Southern California (<b>USC</b>) is passionately dedicated to pushing boundaries in the areas of <b>computer vision</b>, <b>computer graphics</b>, and <b>robotics</b>. 
-
-                <br><br>
-                
-                Our research is currently centered around the nuanced <b>understanding</b> and <b>representation</b> of <b>3D scenes</b>, the development of <b>foundation models</b> for <b>intelligent robots</b> and <b>vehicles</b>, and the exploration of <b>geometry-inspired deep learning techniques</b>.
-            </p>
-            <div style="display: flex; width:30%;justify-content: space-between;margin-top: 2em;">
-                <a style="color:var(--red1); font-weight: 600;" href="https://github.com/USC-GVL">Github</a>
-                <a style="color:var(--red1); font-weight: 600;" href="https://twitter.com/yuewang314">Twitter</a>
+            <div class="social-links">
+                <a class="btn" href="https://github.com/physical-superintelligence-lab" target="_blank">Github</a>
+                <a class="btn" href="https://twitter.com/yuewang314" target="_blank">Twitter</a>
             </div>
         </div>
-        <div style="width:calc(var(--width1)*0.45); position:relative;">
-            <img style="width: 100%;" src="assets/gvl.svg" />
+
+        <div class="hero-image">
+            <img src="assets/gvl.svg" alt="PSI Lab Logo" />
         </div>
     </div>
 
-
     <div class="divider"></div>
-    <div style="margin-top: 1em; margin-bottom: 5em;">
-        <h2 style="color:var(--red1); font-size:35px; font-weight: 700;">News</h2>
+
+    <div class="news-container">
+        <h2>News</h2>
     
-        <!-- Scrollable Container -->
-        <div style="max-height: 300px; overflow-y: auto; padding: 1em; border-radius: 5px;">
-            <div style="display: flex; margin-bottom: 1em;">
-                <div style="width: 100px; font-weight: bold; font-size: 1em; margin-right: 1em;">Aug, 2025</div>
-                <div style="flex: 1; font-size: 1em;">
+        <div class="news-scroll">
+            
+            <div class="news-card">
+                <div class="news-date">Dec, 2025</div>
+                <div class="news-content">
+                    <a href="https://pointscoder.github.io/">Jiageng Mao</a> is awarded the <span class="highlight-red">NVIDIA Graduate Fellowship 2026</span>.
+                </div>
+            </div>
+
+            <div class="news-card">
+                <div class="news-date">Sep, 2025</div>
+                <div class="news-content">
+                    <a href="https://sihengz02.github.io/">Siheng Zhao</a> is awarded the <span class="highlight-red">Amazon ML Fellowship 2026</span>.
+                </div>
+            </div>
+
+            <div class="news-card">
+                <div class="news-date">Aug, 2025</div>
+                <div class="news-content">
                     One paper accepted to Humanoid 2025. 
                 </div>
             </div>
-            <div style="display: flex; margin-bottom: 1em;">
-                <div style="width: 100px; font-weight: bold; font-size: 1em; margin-right: 1em;">Aug, 2025</div>
-                <div style="flex: 1; font-size: 1em;">
+
+            <div class="news-card">
+                <div class="news-date">Aug, 2025</div>
+                <div class="news-content">
                     Two papers accepted to CoRL 2025. 
                 </div>
             </div>
-            <div style="display: flex; margin-bottom: 1em;">
-                <div style="width: 100px; font-weight: bold; font-size: 1em; margin-right: 1em;">June, 2025</div>
-                <div style="flex: 1; font-size: 1em;">
+
+            <div class="news-card">
+                <div class="news-date">June, 2025</div>
+                <div class="news-content">
                     Three papers accepted to ICCV 2025. 
                 </div>
             </div>
-            <div style="display: flex; margin-bottom: 1em;">
-                <div style="width: 100px; font-weight: bold; font-size: 1em; margin-right: 1em;">May, 2025</div>
-                <div style="flex: 1; font-size: 1em;">
+
+            <div class="news-card">
+                <div class="news-date">May, 2025</div>
+                <div class="news-content">
                     One paper accepted to SIGGRAPH 2025. 
                 </div>
             </div>
-            <div style="display: flex; margin-bottom: 1em;">
-                <div style="width: 100px; font-weight: bold; font-size: 1em; margin-right: 1em;">Apr, 2025</div>
-                <div style="flex: 1; font-size: 1em;">
+
+            <div class="news-card">
+                <div class="news-date">Apr, 2025</div>
+                <div class="news-content">
+                    <a href="https://jiawei-yang.github.io/">Jiawei Yang</a> and <a href="https://cameronosmith.github.io/">Cameron Smith</a> are awarded the <a href="https://www.qualcomm.com/research/university-relations/innovation-fellowship/2025-north-america" class="highlight-red">Qualcomm Innovation Fellowship 2025</a>.
+                </div>
+            </div>
+
+            <div class="news-card">
+                <div class="news-date">Apr, 2025</div>
+                <div class="news-content">
                     One paper accepted to RSS 2025. 
                 </div>
             </div>
-            <div style="display: flex; margin-bottom: 1em;">
-                <div style="width: 100px; font-weight: bold; font-size: 1em; margin-right: 1em;">Jan, 2025</div>
-                <div style="flex: 1; font-size: 1em;">
+
+            <div class="news-card">
+                <div class="news-date">Jan, 2025</div>
+                <div class="news-content">
                     Two papers accepted to ICRA 2025. 
                 </div>
             </div>
-            <div style="display: flex; margin-bottom: 1em;">
-                <div style="width: 100px; font-weight: bold; font-size: 1em; margin-right: 1em;">Jan, 2025</div>
-                <div style="flex: 1; font-size: 1em;">
+
+            <div class="news-card">
+                <div class="news-date">Jan, 2025</div>
+                <div class="news-content">
                     Eight papers accepted to ICLR 2025. 
                 </div>
             </div>
-            <div style="display: flex; margin-bottom: 1em;">
-                <div style="width: 100px; font-weight: bold; font-size: 1em; margin-right: 1em;">Dec, 2024</div>
-                <div style="flex: 1; font-size: 1em;">
-                    <a href="https://jiawei-yang.github.io/" style="color:var(--red1);">Jiawei Yang</a> is awarded the <span style="color: var(--deeporange);">NVIDIA Graduate Fellowship 2025</span>.
+
+            <div class="news-card">
+                <div class="news-date">Dec, 2024</div>
+                <div class="news-content">
+                    <a href="https://jiawei-yang.github.io/">Jiawei Yang</a> is awarded the <a href="https://research.nvidia.com/graduate-fellowships/2025" class="highlight-red">NVIDIA Graduate Fellowship 2025</a>.
                 </div>
             </div>
-            <!-- News Item 1 -->
-            <div style="display: flex; margin-bottom: 1em;">
-                <div style="width: 100px; font-weight: bold; font-size: 1em; margin-right: 1em;">Oct, 2024</div>
-                <div style="flex: 1; font-size: 1em;">
-                    <a href="https://yuewang.xyz/" style="color:var(--red1);">Prof. Wang</a> will serve as Area Chairs for 3DV 2025, ICLR 2025, CVPR 2025, and a Presentation Chair for RSS 2025.
+
+            <div class="news-card">
+                <div class="news-date">Oct, 2024</div>
+                <div class="news-content">
+                    <a href="https://yuewang.xyz/">Prof. Wang</a> will serve as Area Chairs for 3DV 2025, ICLR 2025, CVPR 2025, and a Presentation Chair for RSS 2025.
                 </div>
             </div>
-            <div style="display: flex; margin-bottom: 1em;">
-                <div style="width: 100px; font-weight: bold; font-size: 1em; margin-right: 1em;">Oct, 2024</div>
-                <div style="flex: 1; font-size: 1em;">
-                    <a href="https://jay-ye.github.io/" style="color:var(--red1);">Junjie Ye</a> is awarded the <span style="color: var(--deeporange);">Capital One Fellowship 2025</span>.
+
+            <div class="news-card">
+                <div class="news-date">Oct, 2024</div>
+                <div class="news-content">
+                    <a href="https://jay-ye.github.io/">Junjie Ye</a> is awarded the <a href="https://research.nvidia.com/graduate-fellowships/2025" class="highlight-red">Capital One Fellowship 2025</a>.
                 </div>
             </div>
-            <!-- News Item 2 -->
-            <div style="display: flex; margin-bottom: 1em;">
-                <div style="width: 100px; font-weight: bold; font-size: 1em; margin-right: 1em;">Sep, 2024</div>
-                <div style="flex: 1; font-size: 1em;">
-                    Three papers (including one <span style="color: var(--deeporange);">Spotlight</span>) accepted to NeurIPS 2024.
+
+            <div class="news-card">
+                <div class="news-date">Sep, 2024</div>
+                <div class="news-content">
+                    Three papers (including one <span class="highlight-blue">Spotlight</span>) accepted to NeurIPS 2024.
                 </div>
             </div>
-    
-            <!-- News Item 3 -->
-            <div style="display: flex; margin-bottom: 1em;">
-                <div style="width: 100px; font-weight: bold; font-size: 1em; margin-right: 1em;">Sep, 2024</div>
-                <div style="flex: 1; font-size: 1em;">
-                    Three papers accepted to CoRL 2024. <a href="https://yuxuank.com/RAM/" style="color:var(--red1);">RAM</a> is selected as an <span style="color: var(--deeporange);">oral</span> presentation.
+
+            <div class="news-card">
+                <div class="news-date">Sep, 2024</div>
+                <div class="news-content">
+                    Three papers accepted to CoRL 2024. <a href="https://yuxuank.com/RAM/">RAM</a> is selected as an <span class="highlight-red">oral</span> presentation.
                 </div>
             </div>
-    
-            <!-- News Item 4 -->
-            <div style="display: flex; margin-bottom: 1em;">
-                <div style="width: 100px; font-weight: bold; font-size: 1em; margin-right: 1em;">Sep, 2024</div>
-                <div style="flex: 1; font-size: 1em;">
-                    <a href="https://yuewang.xyz/" style="color:var(--red1);">Prof. Wang</a> receives the <span style="color: var(--deeporange);">Powell Faculty Research Award</span>.
+
+            <div class="news-card">
+                <div class="news-date">Sep, 2024</div>
+                <div class="news-content">
+                    <a href="https://yuewang.xyz/">Prof. Wang</a> receives the <span class="highlight-red">Powell Faculty Research Award</span>.
                 </div>
             </div>
-    
-            <!-- News Item 5 -->
-            <div style="display: flex; margin-bottom: 1em;">
-                <div style="width: 100px; font-weight: bold; font-size: 1em; margin-right: 1em;">Aug, 2024</div>
-                <div style="flex: 1; font-size: 1em;">
-                    Two papers accepted to ECCV 2024. <a href="https://jiawei-yang.github.io/DenoisingViT/" style="color:var(--red1);">DVT</a> is selected as an <span style="color: var(--deeporange);">oral</span> presentation.
+
+            <div class="news-card">
+                <div class="news-date">Aug, 2024</div>
+                <div class="news-content">
+                    Two papers accepted to ECCV 2024. <a href="https://jiawei-yang.github.io/DenoisingViT/">DVT</a> is selected as an <span class="highlight-red">oral</span> presentation.
                 </div>
             </div>
-    
-            <!-- News Item 6 -->
-            <div style="display: flex; margin-bottom: 1em;">
-                <div style="width: 100px; font-weight: bold; font-size: 1em; margin-right: 1em;">Aug, 2024</div>
-                <div style="flex: 1; font-size: 1em;">
-                    <a href="https://yuewang.xyz/" style="color:var(--red1);">Prof. Wang</a> is awarded the <span style="color: var(--deeporange);">Toyota Research Young Faculty Researcher</span>.
+
+            <div class="news-card">
+                <div class="news-date">Aug, 2024</div>
+                <div class="news-content">
+                    <a href="https://yuewang.xyz/">Prof. Wang</a> is awarded the <span class="highlight-red">Toyota Research Young Faculty Researcher</span>.
                 </div>
             </div>
-    
-            <!-- News Item 7 -->
-            <div style="display: flex; margin-bottom: 1em;">
-                <div style="width: 100px; font-weight: bold; font-size: 1em; margin-right: 1em;">Jul, 2024</div>
-                <div style="flex: 1; font-size: 1em;">
-                    <a href="https://usc-gvl.github.io/Agent-Driver/" style="color:var(--red1);">Agent-Driver</a> is accepted to COLM 2024.
+
+            <div class="news-card">
+                <div class="news-date">Jul, 2024</div>
+                <div class="news-content">
+                    <a href="https://physical-superintelligence-lab.github.io/Agent-Driver/">Agent-Driver</a> is accepted to COLM 2024.
                 </div>
             </div>
-            <div style="display: flex; margin-bottom: 1em;">
-                <div style="width: 100px; font-weight: bold; font-size: 1em; margin-right: 1em;">Apr, 2024</div>
-                <div style="flex: 1; font-size: 1em;">
-                    <a href="https://pointscoder.github.io/" style="color:var(--red1);">Jiageng Mao</a> and <a href="https://jay-ye.github.io/" style="color:var(--red1);">Junjie Ye</a> are awarded the <a href="https://www.qualcomm.com/research/university-relations/innovation-fellowship/2024-north-america" style="color:var(--deeporange);">Qualcomm Innovation Fellowship 2024</a>.
+
+            <div class="news-card">
+                <div class="news-date">Apr, 2024</div>
+                <div class="news-content">
+                    <a href="https://pointscoder.github.io/">Jiageng Mao</a> and <a href="https://jay-ye.github.io/">Junjie Ye</a> are awarded the <a href="https://www.qualcomm.com/research/university-relations/innovation-fellowship/2024-north-america" class="highlight-red">Qualcomm Innovation Fellowship 2024</a>.
                 </div>
             </div>
-            <!-- News Item 8 -->
-            <div style="display: flex; margin-bottom: 1em;">
-                <div style="width: 100px; font-weight: bold; font-size: 1em; margin-right: 1em;">Apr, 2024</div>
-                <div style="flex: 1; font-size: 1em;">
-                    <a href="https://scholar.google.com/citations?user=KmGNBSMAAAAJ&hl=en" style="color:var(--red1);">James (Yuxi) Qian</a> receives Honorable Mention for <a href="https://cra.org/about/awards/outstanding-undergraduate-researcher-award/" style="color:var(--deeporange);">Outstanding Undergraduate Researchers</a> awarded by CRA.
+
+            <div class="news-card">
+                <div class="news-date">Apr, 2024</div>
+                <div class="news-content">
+                    <a href="https://scholar.google.com/citations?user=KmGNBSMAAAAJ&hl=en">James (Yuxi) Qian</a> receives Honorable Mention for <a href="https://cra.org/about/awards/outstanding-undergraduate-researcher-award/" class="highlight-red">Outstanding Undergraduate Researchers</a> awarded by CRA.
                 </div>
             </div>
         </div>

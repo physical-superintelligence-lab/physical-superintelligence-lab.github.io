@@ -1,14 +1,19 @@
 :root {
 	--grey: rgb(90, 90, 90);
-	--blue1: rgb(2,33,105);
+	--blue1: rgb(66, 133, 245);
 	--blue2: rgb(0,51,160);
 	--blue3: rgb(0,114,206);
 	--blue4: rgb(108,172,228);
 	--pink1: #F9564F;
     --width1: 900px;
     --red1: #990000;
+    --red: #EA4335;
     --deeporange: #CC5500;
     --uscgold: #f6c70dcd;
+    --charcoal: #202124;
+    --slate-grey: #5F6368;
+    --off-white: #F8F9FA;
+    --deep-navy: #172B4D;
  }
 
 html, p{
@@ -39,7 +44,7 @@ ul {
 
 a {
     text-decoration: none;
-    color:  var(--red1);
+    color:  var(--blue1);
 }
 
 a:hover{
@@ -52,12 +57,12 @@ i {
 
 h1 {
     font-weight: 600;
-    color: var(--red1);
+    color: var(--blue1);
 }
 
 h2 {
     font-weight: 600;
-    color: var(--red1);
+    color: var(--blue1);
 }
 
 b {

@@ -1,0 +1,126 @@
+/* css/fancy.css */
+
+/* --- IMPORTS & FONTS --- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Space+Grotesk:wght@500;700&display=swap');
+
+/* --- GLOBAL VARIABLES --- */
+:root {
+    --primary: #4285F5;       /* Vibrant Tech Blue */
+    --primary-dark: #1e40af;
+    --secondary: #0F172A;     /* Dark Slate */
+    --accent: #F43F5E;        /* Rose Red */
+    --bg-body: #F8FAFC;       /* Very light cool gray */
+    --bg-card: #FFFFFF;
+    --text-main: #334155;
+    --text-head: #0F172A;
+    --glass: rgba(255, 255, 255, 0.85);
+    --width-max: 1200px;
+}
+
+/* --- RESET & BASE --- */
+* { box-sizing: border-box; }
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-body);
+    color: var(--text-main);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+a { text-decoration: none; color: var(--primary); transition: all 0.2s ease; }
+a:hover { color: var(--primary-dark); }
+h1, h2, h3 { font-family: 'Space Grotesk', sans-serif; color: var(--primary); }
+h1 { font-size: 2.5rem; margin-bottom: 1rem; }
+h2 { font-size: 1.8rem; margin-top: 2rem; margin-bottom: 1rem; border-left: 4px solid var(--primary); padding-left: 15px; }
+
+/* --- HEADER (Glassmorphism) --- */
+header#header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5%;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: var(--glass);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    width: 100%;
+}
+
+.nav-links { display: flex; gap: 30px; }
+.nav-links a { color: var(--text-main); font-weight: 500; font-size: 0.95rem; position: relative; }
+.nav-links a:hover, .nav-links a.active { color: var(--primary); }
+.nav-links a::after {
+    content: ''; position: absolute; width: 0; height: 2px;
+    bottom: -4px; left: 0; background-color: var(--primary); transition: width 0.3s ease;
+}
+.nav-links a:hover::after { width: 100%; }
+
+/* --- SECTIONS --- */
+.section {
+    max-width: var(--width-max);
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+/* --- CARDS (Used for Research & Members) --- */
+.fancy-card {
+    background: var(--bg-card);
+    border: 1px solid #E2E8F0;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+}
+
+.fancy-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.1);
+    border-color: var(--primary);
+}
+
+/* --- RESEARCH LIST STYLING --- */
+.pub-item {
+    display: flex;
+    gap: 20px;
+}
+.pub-thumb img, .pub-thumb video {
+    width: 160px;
+    border-radius: 8px;
+    object-fit: cover;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+.pub-info b { font-size: 1.1rem; color: var(--text-head); display: block; margin-bottom: 5px; }
+.pub-info p { margin: 4px 0; font-size: 0.95rem; }
+.pub-links a { margin-right: 15px; font-weight: 600; font-size: 0.9rem; }
+
+/* --- MEMBER GRID STYLING --- */
+.member-card {
+    width: 200px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    background: white;
+    padding: 15px;
+    border-radius: 12px;
+    border: 1px solid #E2E8F0;
+    transition: transform 0.2s ease;
+}
+.member-card:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+.member-card img { width: 100%; border-radius: 8px; margin-bottom: 10px; aspect-ratio: 1; object-fit: cover; }
+.member-card b { display: block; color: var(--text-head); margin-bottom: 4px; }
+.member-card p { font-size: 0.85rem; color: #64748B; margin: 0; }
+
+/* --- SLIDESHOW (Kept from old style) --- */
+.slideshow-container { position: relative; max-width: 100%; margin: auto; overflow: hidden; border-radius: 12px; margin-bottom: 40px; }
+.mySlides { display: none; }
+.mySlides img { width: 100%; display: block; }
+.fade { animation: fade 1.5s; }
+@keyframes fade { from { opacity: 0.4 } to { opacity: 1 } }
+.dot-container { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); }
+.dot { height: 10px; width: 10px; margin: 0 5px; background-color: rgba(255,255,255,0.5); border-radius: 50%; display: inline-block; cursor: pointer; }
+.dot.active { background-color: white; }

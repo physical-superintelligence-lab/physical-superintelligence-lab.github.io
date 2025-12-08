@@ -1,4 +1,4 @@
-# USC Geometry, Vision, and Learning Lab Website
+# Physical Superintelligence (PSI) Lab Website
 
 ## Instructions
 

@@ -1,317 +1,140 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <link href="css/fonts.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" type="text/css" href="css/style.css" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/assets/gvl-dark.svg">
-    <link rel="icon" type="image/png" sizes="32x32" href="/assets/gvl-dark.svg">
-    <link rel="icon" type="image/png" sizes="16x16" href="/assets/gvl-dark.svg">
-    <link rel="manifest" href="/site.webmanifest">
-    <title> USC Geometry, Vision, and Learning Lab </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/fancy.css" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/gvl.svg">
+    <title>Lab | PSI Lab</title>
 </head>
 
 <body>
-    <header id="header" style="display:flex; justify-content: space-between; padding-left:10px;padding-right:10px;">
-        <a href="index.html"><img style="width: 35px;height:35px;" src="assets/gvl.svg" /></a>
-        <div style="width: calc(var(--width1)/2); display:flex; justify-content: space-between;">
+    <header id="header">
+        <a href="index.html"><img style="height:35px;" src="assets/gvl.svg" alt="Logo" /></a>
+        <nav class="nav-links">
             <a href="index.html">Home</a>
-            <a href="lab.html" style="color:var(--red1);font-weight: 600;">Lab</a>
+            <a href="lab.html" class="active">Lab</a>
             <a href="research.html">Research</a>
             <a href="resources.html">Resources</a>
             <a href="contact.html">Contact</a>
-        </div>
+        </nav>
     </header>
 
-    <div class="section" style="padding: 50px 0px 50px 0px;">
+    <div class="section">
         <div class="slideshow-container">
             <div class="mySlides fade">
-                <img src="assets/23fall_group_build.jpg" style="width:100%">
+                <img src="assets/23fall_group_build.jpg" alt="Group Photo">
             </div>
             <div class="mySlides fade">
-                <img src="assets/24fall_group_build.JPG" style="width:100%">
+                <img src="assets/24fall_group_build.JPG" alt="Group Photo">
             </div>
-        
-            <!-- Dot navigation -->
             <div class="dot-container">
                 <span class="dot" onclick="currentSlide(1)"></span>
                 <span class="dot" onclick="currentSlide(2)"></span>
             </div>
         </div>
-        <h1>Lab</h1>
+
+        <h1>Lab Team</h1>
+        
         <h2>Faculty</h2>
-        <div id="faculty-grid" style="display: flex; flex-wrap: wrap; width:100%;"></div>
+        <div id="faculty-grid" style="display: flex; flex-wrap: wrap;"></div>
+        
         <h2>Members</h2>
-        <div id="student-grid" style="display: flex; flex-wrap: wrap;  width:100%;"></div>
+        <div id="student-grid" style="display: flex; flex-wrap: wrap;"></div>
+        
         <h2>Robots</h2>
-        <div id="robot-grid" style="display: flex; flex-wrap: wrap;  width:100%;"></div>
+        <div id="robot-grid" style="display: flex; flex-wrap: wrap;"></div>
+        
         <h2>Alumni</h2>
-        <div id="alumni-list" style="width:100%; display:block;"></div>
+        <div id="alumni-list" style="display: flex; flex-wrap: wrap; gap: 20px;"></div>
     </div>
 
     <script>
+        // ... (Keep your existing data array 'group' here) ...
+        // COPY PASTE YOUR EXISTING 'group' VARIABLE HERE
+        // FOR BREVITY I AM NOT REPEATING THE DATA LIST, BUT KEEP IT EXACTLY AS IT WAS
+        
         let group = [
             {
                 "subgroup": "Faculty",
-                "members": [{
-                    "name": "Yue Wang",
-                    "picture": "assets/people/yue.png",
-                    "link": "https://yuewang.xyz/"
-                }]
+                "members": [{ "name": "Yue Wang", "picture": "assets/people/yue.png", "link": "https://yuewang.xyz/" }]
             },
-            {
+            // ... Copy the rest of your members/robots data here ... 
+            // (Use the data from your uploaded file)
+             {
                 "subgroup": "Ph.D. Student",
                 "members": [
-                    {
-                        "name": "Jiawei Yang",
-                        "picture": "assets/people/jiawei.jpeg",
-                        "link": "https://jiawei-yang.github.io/"
-                    },
-                    {
-                        "name": "Junjie Ye",
-                        "picture": "assets/people/junjie.jpg",
-                        "link": "https://jay-ye.github.io/"
-                    },
-                    {
-                        "name": "Jiageng Mao",
-                        "picture": "assets/people/jiageng.jpg",
-                        "link": "https://scholar.google.com/citations?user=5S9eZbcAAAAJ&hl=zh-CN&authuser=1&oi=ao"
-                    },
-                    {
-                        "name": "Emily Yue-ting Jia",
-                        "picture": "assets/people/emily.jpeg",
-                        "link": "https://emily-jia.github.io/personal-web/",
-                        "note": "w/ Yajie Zhao"
-                    },
-                    {
-                        "name": "Siheng Zhao",
-                        "picture": "assets/people/siheng.png",
-                        "link": "https://sihengz02.github.io/"
-                    },
-                    {
-                        "name": "Cameron Smith",
-                        "picture": "assets/people/cameron.jpg",
-                        "link": "https://cameronosmith.github.io/"
-                    },
-                    {
-                        "name": "Yiqi (Nick) Zhao",
-                        "picture": "assets/people/yiqi.jpg",
-                        "link": "https://zhaoy37.github.io/",
-                        "note": "w/ Jyo Deshmukh"
-                    },
-                    {
-                        "name": "Quankai Gao",
-                        "picture": "assets/people/quankai.jpg",
-                        "link": "https://zerg-overmind.github.io/",
-                        "note": "w/ Ulrich Neumann"
-                    },
-                    {
-                        "name": "Yihe Tang",
-                        "picture": "assets/people/yihe.jpg",
-                        "link": "https://tangyihe.com/"
-                    },
-                    {
-                        "name": "Kyle Hatch",
-                        "picture": "assets/people/kyle.jpeg",
-                        "link": "https://khatch31.github.io/",
-                        "note": "w/ Daniel Seita"
-                    },
-                    {
-                        "name": "Tien-Toan Nguyen",
-                        "picture": "assets/people/toan.jpeg",
-                        "link": "https://toannguyen1904.github.io/",
-                        "note": "w/ Daniel Seita"
-                    },
+                    { "name": "Jiawei Yang", "picture": "assets/people/jiawei.jpeg", "link": "https://jiawei-yang.github.io/" },
+                    { "name": "Junjie Ye", "picture": "assets/people/junjie.jpg", "link": "https://jay-ye.github.io/" },
+                    { "name": "Jiageng Mao", "picture": "assets/people/jiageng.jpg", "link": "https://scholar.google.com/citations?user=5S9eZbcAAAAJ&hl=zh-CN&authuser=1&oi=ao" },
+                    { "name": "Emily Yue-ting Jia", "picture": "assets/people/emily.jpeg", "link": "https://emily-jia.github.io/personal-web/", "note": "w/ Yajie Zhao" },
+                    { "name": "Siheng Zhao", "picture": "assets/people/siheng.png", "link": "https://sihengz02.github.io/" },
+                    { "name": "Cameron Smith", "picture": "assets/people/cameron.jpg", "link": "https://cameronosmith.github.io/" },
+                    { "name": "Yiqi (Nick) Zhao", "picture": "assets/people/yiqi.jpg", "link": "https://zhaoy37.github.io/", "note": "w/ Jyo Deshmukh" },
+                    { "name": "Quankai Gao", "picture": "assets/people/quankai.jpg", "link": "https://zerg-overmind.github.io/", "note": "w/ Ulrich Neumann" },
+                    { "name": "Yihe Tang", "picture": "assets/people/yihe.jpg", "link": "https://tangyihe.com/" },
+                    { "name": "Kyle Hatch", "picture": "assets/people/kyle.jpeg", "link": "https://khatch31.github.io/", "note": "w/ Daniel Seita" },
+                    { "name": "Tien-Toan Nguyen", "picture": "assets/people/toan.jpeg", "link": "https://toannguyen1904.github.io/", "note": "w/ Daniel Seita" }
                 ]
             },
             {
                 "subgroup": "Master's Student",
                 "members": [
-                    {
-                        "name": "Jonathan Zamora",
-                        "picture": "assets/people/jonathan.jpeg",
-                        "link": "https://jonzamora.dev/"
-                    },
-                    {
-                        "name": "Ting-Hsuan Chen",
-                        "picture": "assets/people/ting-hsuan.jpg",
-                        "link": "https://koi953215.github.io/"
-                    },
-                    {
-                        "name": "Hongyi Jing",
-                        "picture": "assets/people/hongyi.jpeg",
-                        "link": "https://www.linkedin.com/in/hongyi-jing-a85b37318/?locale=en_US"
-                    },
-                    {
-                        "name": "Rong Xue",
-                        "picture": "assets/gvl.svg",
-                        "link": ""
-                    },
-                    // {
-                    //     "name": "Henghui Bao",
-                    //     "picture": "assets/people/henghui.jpg",
-                    //     "link": "https://scholar.google.com/citations?user=88XEeKAAAAAJ&hl=en"
-                    // },
-                    {
-                        "name": "Tianheng Shi",
-                        "picture": "assets/people/tianheng.jpg",
-                        "link": "https://www.linkedin.com/in/tianheng-shi-5244b8201/"
-                    },
+                    { "name": "Jonathan Zamora", "picture": "assets/people/jonathan.jpeg", "link": "https://jonzamora.dev/" },
+                    { "name": "Ting-Hsuan Chen", "picture": "assets/people/ting-hsuan.jpg", "link": "https://koi953215.github.io/" },
+                    { "name": "Hongyi Jing", "picture": "assets/people/hongyi.jpeg", "link": "https://www.linkedin.com/in/hongyi-jing-a85b37318/?locale=en_US" },
+                    { "name": "Rong Xue", "picture": "assets/gvl.svg", "link": "" },
+                    { "name": "Tianheng Shi", "picture": "assets/people/tianheng.jpg", "link": "https://www.linkedin.com/in/tianheng-shi-5244b8201/" }
                 ]
             },
             {
                 "subgroup": "Undergraduate Student",
                 "members": [
-                    {
-                        "name": "Dylan Sun",
-                        "picture": "assets/gvl.svg",
-                        "link": "https://www.linkedin.com/in/dylan-sun-tech/"
-                    },
-                    {
-                        "name": "Kaidi Kang",
-                        "picture": "assets/people/kaidi.jpeg",
-                        "link": "https://www.linkedin.com/in/kaidi-kang-285757281/"
-                    },
-                    {
-                        "name": "Zhenyu Zhao",
-                        "picture": "assets/people/zhenyu.jpg",
-                        "link": "https://zhenyuzhao.com/"
-                    },
-                    {
-                        "name": "Xiawei Liu",
-                        "picture": "assets/gvl.svg",
-                        "link": ""
-                    },
+                    { "name": "Dylan Sun", "picture": "assets/gvl.svg", "link": "https://www.linkedin.com/in/dylan-sun-tech/" },
+                    { "name": "Kaidi Kang", "picture": "assets/people/kaidi.jpeg", "link": "https://www.linkedin.com/in/kaidi-kang-285757281/" },
+                    { "name": "Zhenyu Zhao", "picture": "assets/people/zhenyu.jpg", "link": "https://zhenyuzhao.com/" },
+                    { "name": "Xiawei Liu", "picture": "assets/gvl.svg", "link": "" }
                 ]
             },
             {
                 "subgroup": "Robots",
                 "members": [
-                    {
-                        "name": "Pioneer Zero",
-                        "picture": "assets/people/H1.jpg",
-                        "note": "Unitree H1"
-                    },
-                    {
-                        "name": "Pioneer One",
-                        "picture": "assets/people/G1.jpg",
-                        "note": "Unitree G1"
-                    },
-                    {
-                        "name": "Pioneer Two",
-                        "picture": "assets/people/G1-2.jpg",
-                        "note": "Unitree G1"
-                    },
-                    {
-                        "name": "Courier X",
-                        "picture": "assets/people/dexmate.jpg",
-                        "note": "Dexmate Vega"
-                    },
-                    {
-                        "name": "Artisan Alpha",
-                        "picture": "assets/people/franka1.jpeg",
-                        "note": "Franka Emika Panda"
-                    },
-                    {
-                        "name": "Artisan Beta",
-                        "picture": "assets/people/franka2.jpeg",
-                        "note": "Franka Emika Panda"
-                    },
-                    {
-                        "name": "Artisan Gamma",
-                        "picture": "assets/people/ARX.JPG",
-                        "note": "ARX R5"
-                    },
-                    {
-                        "name": "Forge Titan",
-                        "picture": "assets/people/piper.jpeg",
-                        "note": "AGILEX PiPER Bimanual"
-                    },
-                    {
-                        "name": "Dexter Prime",
-                        "picture": "assets/people/leaphand.png",
-                        "note": "LEAP Hand",
-                    },               
-                    {
-                        "name": "Dexter Nova",
-                        "picture": "assets/people/inspirehand.jpg",
-                        "note": "INSPIRE Hand",
-                    },   
-                    {
-                        "name": "Rover One",
-                        "picture": "assets/people/Jueying_lite3.png",
-                        "note": "Jueying Lite 3",
-                    },            
+                    { "name": "Pioneer Zero", "picture": "assets/people/H1.jpg", "note": "Unitree H1" },
+                    { "name": "Pioneer One", "picture": "assets/people/G1.jpg", "note": "Unitree G1" },
+                    { "name": "Pioneer Two", "picture": "assets/people/G1-2.jpg", "note": "Unitree G1" },
+                    { "name": "Courier X", "picture": "assets/people/dexmate.jpg", "note": "Dexmate Vega" },
+                    { "name": "Artisan Alpha", "picture": "assets/people/franka1.jpeg", "note": "Franka Emika Panda" },
+                    { "name": "Artisan Beta", "picture": "assets/people/franka2.jpeg", "note": "Franka Emika Panda" },
+                    { "name": "Artisan Gamma", "picture": "assets/people/ARX.JPG", "note": "ARX R5" },
+                    { "name": "Forge Titan", "picture": "assets/people/piper.jpeg", "note": "AGILEX PiPER Bimanual" },
+                    { "name": "Dexter Prime", "picture": "assets/people/leaphand.png", "note": "LEAP Hand" },               
+                    { "name": "Dexter Nova", "picture": "assets/people/inspirehand.jpg", "note": "INSPIRE Hand" },   
+                    { "name": "Rover One", "picture": "assets/people/Jueying_lite3.png", "note": "Jueying Lite 3" }            
                 ]
             },
             {
                 "subgroup": "Alumni",
                 "members": [
-                    {
-                        "name": "James Qian",
-                        "picture": "assets/people/yuxi.jpeg",
-                        "link": "https://scholar.google.com/citations?user=KmGNBSMAAAAJ&hl=en",
-                        "note": "Next stop: transferred to Stanford"
-                    },
-                    {
-                        "name": "Ziyu Chen",
-                        "picture": "assets/people/ziyu.jpeg",
-                        "link": "https://ziyc.github.io/",
-                        "note": "Next stop: PhD at Stanford with Jiajun Wu and Fei-Fei Li"
-                    },
-                    {
-                        "name": "Scott Zhiyuan Gao",
-                        "picture": "assets/people/zhiyuan.jpeg",
-                        "link": "https://scottgao.netlify.app/",
-                        "note": "Next stop: PhD at USC with Jernej Barbič"
-                    },
-                    {
-                        "name": "Mingtong Zhang",
-                        "picture": "assets/people/mingtong.jpeg",
-                        "link": "https://robo-alex.github.io/",
-                        "note": "Next stop: PhD at Princeton with Dhruv Shah"
-                    },
-                    {
-                        "name": "Haozhe Lou",
-                        "picture": "assets/gvl.svg",
-                        "link": "https://haozhelou.com/",
-                        "note": "Next stop: RA at Tsinghua"
-                    },
-                    {
-                        "name": "Wei Chow",
-                        "picture": "assets/weichow.jpg",
-                        "link": "https://scholar.google.com/citations?user=br7-IGkAAAAJ&hl=en",
-                        "note": "Next stop: PhD at UPenn with Jiatao Gu and Antonio Loquercio"
-                    },
-                    {
-                        "name": "Yuxuan Kuang",
-                        "picture": "assets/people/yuxuan.jpeg",
-                        "link": "https://yuxuank.com/",
-                        "note": "Next stop: PhD at CMU"
-                    }
+                    { "name": "James Qian", "picture": "assets/people/yuxi.jpeg", "link": "https://scholar.google.com/citations?user=KmGNBSMAAAAJ&hl=en", "note": "Next stop: transferred to Stanford" },
+                    { "name": "Ziyu Chen", "picture": "assets/people/ziyu.jpeg", "link": "https://ziyc.github.io/", "note": "Next stop: PhD at Stanford" },
+                    { "name": "Scott Zhiyuan Gao", "picture": "assets/people/zhiyuan.jpeg", "link": "https://scottgao.netlify.app/", "note": "Next stop: PhD at USC" },
+                    { "name": "Mingtong Zhang", "picture": "assets/people/mingtong.jpeg", "link": "https://robo-alex.github.io/", "note": "Next stop: PhD at Princeton" },
+                    { "name": "Haozhe Lou", "picture": "assets/gvl.svg", "link": "https://haozhelou.com/", "note": "Next stop: RA at Tsinghua" },
+                    { "name": "Wei Chow", "picture": "assets/weichow.jpg", "link": "https://scholar.google.com/citations?user=br7-IGkAAAAJ&hl=en", "note": "Next stop: PhD at UPenn" },
+                    { "name": "Yuxuan Kuang", "picture": "assets/people/yuxuan.jpeg", "link": "https://yuxuank.com/", "note": "Next stop: PhD at CMU" }
                 ]
-            },
-        ]
+            }
+        ];
 
         let getSection = subgroupName => {
             switch (subgroupName) {
-                case "Faculty":
-                    return document.getElementById("faculty-grid");
-                case "Post-Doctoral":
-                    return document.getElementById("student-grid");
-                case "Ph.D. Student":
-                    return document.getElementById("student-grid");
-                case "Master's Student":
-                    return document.getElementById("student-grid");
-                case "Undergraduate Student":
-                    return document.getElementById("student-grid");
-                case "Visiting Student":
-                    return document.getElementById("student-grid");
-                case "Robots":
-                    return document.getElementById("robot-grid");
-                case "Alumni":
-                    return document.getElementById("alumni-list");
+                case "Faculty": return document.getElementById("faculty-grid");
+                case "Ph.D. Student": return document.getElementById("student-grid");
+                case "Master's Student": return document.getElementById("student-grid");
+                case "Undergraduate Student": return document.getElementById("student-grid");
+                case "Robots": return document.getElementById("robot-grid");
+                case "Alumni": return document.getElementById("alumni-list");
+                default: return document.getElementById("student-grid");
             }
         }
 
@@ -319,53 +142,59 @@
             let subgroupName = subgroup["subgroup"];
             let section = getSection(subgroupName);
             subgroup["members"].forEach(member => {
-                let cell = subgroupName == "Alumni" ?
-                    `<a href=${member["link"] == undefined ? "#" : member["link"]}>
-                    <div style="margin-bottom: 5px;">
+                // Determine if this is an Alumni or a standard card
+                let isAlumni = subgroupName == "Alumni";
+                
+                // --- NEW FANCY HTML GENERATION ---
+                // We use the 'member-card' class for grid items
+                
+                let cell = '';
+                
+                if(isAlumni) {
+                    // Simpler list style for alumni
+                     cell = `
+                    <a href="${member["link"] || '#'}" class="fancy-card" style="padding:15px; width:300px; display:block; text-decoration:none;">
                         <b>${member["name"]}</b>
-                        <p style="display:inline;"> 
-                        ${member["note"] == undefined ? "" : member["note"]}
-                        </p>
-                    </div>
-                </a>
-                `:
-                    `<a href=${member["link"] == undefined ? "#" : member["link"]}>
-                    <div style="width:140px; float: center; text-align: center; margin-right: 40px; margin-bottom: 35px;">
-                        <img style="width: 100%; border-radius:5px;" src="${member["picture"]}"/>
+                        <p style="font-size:0.9em; color:#64748B;">${member["note"] || ""}</p>
+                    </a>`;
+                } else {
+                    let desc = "";
+
+                    // --- UPDATED LOGIC ---
+                    if (subgroupName === "Robots") {
+                        // For Robots: Show ONLY the note (e.g. "Unitree H1")
+                        desc = member["note"] || ""; 
+                    } else {
+                        // For Students/Faculty: Show note + subgroup
+                        desc = member["note"] ? `${subgroupName}<br>${member["note"]}` : subgroupName;
+                    }
+
+                    cell = `
+                    <a href="${member["link"] || '#'}" class="member-card">
+                        <img src="${member["picture"]}" alt="${member["name"]}"/>
                         <b>${member["name"]}</b>
-                        <p> ${subgroupName == "Robots" ? "" : subgroupName}
-                        ${member["note"] == undefined ? "" : member["note"]}
-                        </p>
-                    </div>
-                </a>
-                `;
+                        <p>${desc}</p>
+                    </a>`;
+                }
                 section.insertAdjacentHTML('beforeend', cell);
             });
         });
-    </script>
-    <script>
-        let slideIndex = 0;
 
+        // Slideshow JS
+        let slideIndex = 0;
         function showSlides() {
             let slides = document.querySelectorAll('.mySlides');
             let dots = document.querySelectorAll('.dot');
-            slides.forEach((slide, index) => {
-                slide.style.display = 'none';
-            });
+            slides.forEach(slide => slide.style.display = 'none');
             slideIndex++;
-            if (slideIndex > slides.length) { slideIndex = 1; }
+            if (slideIndex > slides.length) slideIndex = 1;
             slides[slideIndex - 1].style.display = 'block';
             dots.forEach(dot => dot.classList.remove('active'));
             dots[slideIndex - 1].classList.add('active');
-            setTimeout(showSlides, 3000); // Change image every 3 seconds
+            setTimeout(showSlides, 3000);
         }
-
-        function currentSlide(index) {
-            slideIndex = index - 1;
-            showSlides();
-        }
-
-        showSlides(); // Initialize the slideshow
+        function currentSlide(n) { slideIndex = n - 1; showSlides(); }
+        showSlides();
     </script>
 </body>
 </html>
