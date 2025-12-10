@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/fancy.css" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/gvl.svg">
+    <title>Physical Superintelligence Lab</title>
+
+    <style>
+        /* --- HERO SECTION LAYOUT --- */
+        
+        .hero {
+            display: flex;
+            /* CHANGED: Increased from 1200px to 1450px to make the whole section wider */
+            max-width: 1350px;
+            margin: 60px auto;
+            padding: 0 20px;
+            gap: 60px; /* Space between Left and Right columns */
+            align-items: flex-start; /* Align columns to top */
+        }
+
+        /* --- LEFT COLUMN (Logo + Title + Buttons) --- */
+        .hero-col-left {
+            /* CHANGED: Reduced from 0.6 to 0.4 so the sidebar takes less space */
+            flex: 0.4; 
+            display: flex;
+            flex-direction: column;
+            gap: 40px; 
+        }
+
+        .hero-logo {
+            width: 100%;
+            max-width: 320px; 
+            height: auto;
+            object-fit: contain;
+            align-self: flex-start;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin: 0;
+            color: var(--text-head);
+            letter-spacing: -0.02em;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, var(--primary) 0%, #60A5FA 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* --- RIGHT COLUMN (Video + Description) --- */
+        .hero-col-right {
+            /* CHANGED: Increased from 1 to 1.2 to make the video/text significantly wider */
+            flex: 1.2; 
+            display: flex;
+            flex-direction: column;
+            gap: 30px; 
+        }
+
+        /* Video Container (Restored Iframe Wrapper) */
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 Ratio */
+            height: 0;
+            background: #000;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+            border: 1px solid #E2E8F0;
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* Description Text Styling */
+        .hero-desc {
+            font-size: 1.1rem;
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* Paragraph spacing control */
+        .hero-desc p {
+            margin-top: 0;
+            margin-bottom: 12px; /* Thinner distance between paragraphs */
+        }
+        
+        .hero-desc p:last-child {
+            margin-bottom: 0;
+        }
+
+        .hero-desc b { color: var(--text-head); }
+
+
+        /* --- ICON BUTTONS --- */
+        .social-links { 
+            display: flex; 
+            gap: 15px; 
+            margin-top: 15px;
+        }
+
+        .icon-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%; /* Circle shape */
+            background-color: white;
+            border: 1px solid #E2E8F0;
+            color: var(--text-main);
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .icon-btn svg {
+            width: 22px;
+            height: 22px;
+            fill: currentColor;
+        }
+
+        .icon-btn:hover {
+            transform: translateY(-3px);
+            border-color: var(--primary);
+            color: var(--primary);
+            box-shadow: 0 5px 15px rgba(37, 99, 235, 0.15);
+        }
+
+        /* --- UTILS --- */
+        .divider { height: 1px; background: linear-gradient(90deg, transparent, #CBD5E1, transparent); margin: 60px 0; }
+        .news-container { max-width: 1000px; margin: 0 auto 80px auto; padding: 0 20px; }
+        .news-scroll { max-height: 450px; overflow-y: auto; padding: 5px; padding-right: 15px; }
+        .news-scroll::-webkit-scrollbar { width: 6px; }
+        .news-scroll::-webkit-scrollbar-thumb { background-color: #CBD5E1; border-radius: 10px; }
+        .news-card { display: flex; align-items: flex-start; background: var(--bg-card); margin-bottom: 12px; padding: 16px; border-radius: 12px; border: 1px solid #E2E8F0; transition: all 0.2s ease; }
+        .news-card:hover { transform: translateY(-2px); box-shadow: 0 8px 15px -3px rgba(0, 0, 0, 0.05); border-color: var(--primary); }
+        .news-date { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 0.85rem; color: var(--primary); background-color: #EFF6FF; padding: 5px 10px; border-radius: 6px; margin-right: 15px; min-width: 85px; text-align: center; flex-shrink: 0; margin-top: 2px; }
+        .news-content { font-size: 0.95rem; }
+        .highlight-red { color: var(--accent); font-weight: 600; }
+        .highlight-blue { color: var(--primary); font-weight: 600; }
+
+        /* --- MOBILE RESPONSIVE --- */
+        @media (max-width: 900px) {
+            .hero { flex-direction: column; gap: 40px; margin-top: 30px;}
+            
+            .hero-col-left { display: contents; } 
+            .hero-col-right { display: contents; }
+
+            .hero-logo { order: 1; max-width: 200px; align-self: center; margin-bottom: 20px; }
+            .video-wrapper { order: 2; margin-bottom: 20px; }
+            .hero-title { order: 3; font-size: 2.8rem; text-align: center; margin-bottom: 10px; }
+            .hero-desc { order: 4; text-align: center; margin-bottom: 20px; }
+            .social-links { order: 5; justify-content: center; width: 100%; }
+
+            .news-card { flex-direction: column; }
+            .news-date { margin-bottom: 8px; }
+        }
+    </style>
+</head>
+
+<body>
+    <header id="header">
+        <a href="index.html"><img style="height:35px;" src="assets/gvl.svg" alt="Logo" /></a>
+        <nav class="nav-links">
+            <a href="index.html" class="active">Home</a>
+            <a href="lab.html">Lab</a>
+            <a href="research.html">Research</a>
+            <!-- <a href="resources.html">Resources</a> -->
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <div class="hero">
+        
+        <div class="hero-col-left">
+            <img src="assets/gvl.svg" alt="PSI Lab Logo" class="hero-logo" />
+            
+            <h1 class="hero-title">
+                Physical<br>
+                <span class="gradient-text">Superintelligence</span><br>
+                (PSI) Lab
+            </h1>
+
+            <div class="social-links">
+                <a class="icon-btn" href="https://github.com/physical-superintelligence-lab" target="_blank" aria-label="GitHub">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                </a>
+                <a class="icon-btn" href="https://twitter.com/yuewang314" target="_blank" aria-label="Twitter">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+
+        <div class="hero-col-right">
+            
+            <div class="video-wrapper">
+                <iframe 
+                    src="https://www.youtube.com/embed/TobtqoY1BiM?rel=0" 
+                    title="Lab Introduction" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+
+            <div class="hero-desc">
+                <p>
+                    The <b>Physical Superintelligence (PSI) Lab</b> at USC develops next-generation robotic systems grounded in large-scale data, foundation models, and real-world deployment.
+                </p>
+                <p>
+                    We build multimodal data engines, generative training pipelines, and advanced visuomotor policies for humanoids and manipulators. Our work spans <b>3D scene understanding</b>, <b>whole-body humanoid control</b>, and <b>dexterous manipulation</b>, tightly linking ML algorithms with real hardware.
+                </p>
+                <p>
+                    Our goal is to create physical AI agents that can operate safely and autonomously in everyday human environments.
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="news-container">
+        <h2>News</h2>
+        <div class="news-scroll">
+            
+            <div class="news-card">
+                <div class="news-date">Dec, 2025</div>
+                <div class="news-content">
+                    <a href="https://pointscoder.github.io/">Jiageng Mao</a> is awarded the <span class="highlight-red">NVIDIA Graduate Fellowship 2026</span>.
+                </div>
+            </div>
+
+            <div class="news-card">
+                <div class="news-date">Nov, 2025</div>
+                <div class="news-content">
+                    We received funding from <span class="highlight-red">Toyota Research Institute</span> for two thrusts: "Reasoning in Motion: Dynamic Adaptation and Intelligent Execution of Large Behavior Models" and "World Models for Next-Generation Autonomous Driving Policy Learning".
+                </div>
+            </div>
+
+            <div class="news-card">
+                <div class="news-date">Oct, 2025</div>
+                <div class="news-content">
+                    Our research on "Embodied Intelligence through Generative Simulation for Autonomous Driving and Robotics" is now supported by <span class="highlight-red">Bosch</span>.
+                </div>
+            </div>
+
+            <div class="news-card">
+                <div class="news-date">Sep, 2025</div>
+                <div class="news-content">
+                    <a href="https://sihengz02.github.io/">Siheng Zhao</a> is awarded the <span class="highlight-red">Amazon ML Fellowship 2026</span>.
+                </div>
+            </div>
+
+            <div class="news-card">
+                <div class="news-date">Aug, 2025</div>
+                <div class="news-content">
+                    One paper accepted to Humanoid 2025. 
+                </div>
+            </div>
+
+            <div class="news-card">
+                <div class="news-date">Aug, 2025</div>
+                <div class="news-content">
+                    Two papers accepted to CoRL 2025. 
+                </div>
+            </div>
+
+            <div class="news-card">
+                <div class="news-date">Oct, 2025</div>
+                <div class="news-content">
+                    The <span class="highlight-red">NSF</span> has awarded funding for our research on "Latent Representation Learning for Verifiable Sensor-Rich Systems".
+                </div>
+            </div>
+
+            <div class="news-card">
+                <div class="news-date">June, 2025</div>
+                <div class="news-content">
+                    Three papers accepted to ICCV 2025. 
+                </div>
+            </div>
+
+            <div class="news-card">
+                <div class="news-date">May, 2025</div>
+                <div class="news-content">
+                    One paper accepted to SIGGRAPH 2025. 
+                </div>
+            </div>
+
+            <div class="news-card">
+                <div class="news-date">Apr, 2025</div>
+                <div class="news-content">
+                    <a href="https://jiawei-yang.github.io/">Jiawei Yang</a> and <a href="https://cameronosmith.github.io/">Cameron Smith</a> are awarded the <a href="https://www.qualcomm.com/research/university-relations/innovation-fellowship/2025-north-america" class="highlight-red">Qualcomm Innovation Fellowship 2025</a>.
+                </div>
+            </div>
+
+            <div class="news-card">
+                <div class="news-date">Apr, 2025</div>
+                <div class="news-content">
+                    One paper accepted to RSS 2025. 
+                </div>
+            </div>
+
+            <div class="news-card">
+                <div class="news-date">Jan, 2025</div>
+                <div class="news-content">
+                    Two papers accepted to ICRA 2025. 
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>
