@@ -96,7 +96,17 @@ header#header {
 }
 .pub-info b { font-size: 1.1rem; color: var(--text-head); display: block; margin-bottom: 5px; }
 .pub-info p { margin: 4px 0; font-size: 0.95rem; }
-.pub-links a { margin-right: 15px; font-weight: 600; font-size: 0.9rem; }
+.pub-links a {
+    margin-right: 15px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--text-main);
+}
+.pub-links a:hover { color: var(--primary); }
+
+/* Shared inline highlight utility */
+.highlight-red { color: var(--accent); font-weight: 600; }
+.highlight-blue { color: var(--primary); font-weight: 600; }
 
 /* --- MEMBER GRID STYLING --- */
 .member-card {
