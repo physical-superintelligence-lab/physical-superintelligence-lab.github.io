@@ -23,17 +23,25 @@
         <div class="slideshow-container">
             <div class="mySlides fade">
                 <img src="assets/23fall_group_build.jpg" alt="Group Photo">
+                <div class="slide-caption">Fall 2023</div>
             </div>
             <div class="mySlides fade">
                 <img src="assets/24fall_group_build.JPG" alt="Group Photo">
+                <div class="slide-caption">Fall 2024</div>
             </div>
             <div class="mySlides fade">
                 <img src="assets/25Dec_group.JPG" alt="Group Photo">
+                <div class="slide-caption">Fall 2025</div>
+            </div>
+            <div class="mySlides fade">
+                <img src="assets/26May_group.JPG" alt="Group Photo">
+                <div class="slide-caption">Spring 2026</div>
             </div>
             <div class="dot-container">
                 <span class="dot" onclick="currentSlide(1)"></span>
                 <span class="dot" onclick="currentSlide(2)"></span>
                 <span class="dot" onclick="currentSlide(3)"></span>
+                <span class="dot" onclick="currentSlide(4)"></span>
             </div>
         </div>
 
@@ -196,7 +204,9 @@
 
         // Slideshow JS
         let slideIndex = 0;
+        let slideTimer = null;
         function showSlides() {
+            if (slideTimer) { clearTimeout(slideTimer); slideTimer = null; }
             let slides = document.querySelectorAll('.mySlides');
             let dots = document.querySelectorAll('.dot');
             slides.forEach(slide => slide.style.display = 'none');
@@ -205,7 +215,7 @@
             slides[slideIndex - 1].style.display = 'block';
             dots.forEach(dot => dot.classList.remove('active'));
             dots[slideIndex - 1].classList.add('active');
-            setTimeout(showSlides, 3000);
+            slideTimer = setTimeout(showSlides, 3000);
         }
         function currentSlide(n) { slideIndex = n - 1; showSlides(); }
         showSlides();

@@ -127,8 +127,23 @@ header#header {
 
 /* --- SLIDESHOW (Kept from old style) --- */
 .slideshow-container { position: relative; max-width: 100%; margin: auto; overflow: hidden; border-radius: 12px; margin-bottom: 40px; }
-.mySlides { display: none; }
+.mySlides { display: none; position: relative; }
 .mySlides img { width: 100%; display: block; }
+.slide-caption {
+    position: absolute;
+    top: 16px;
+    left: 20px;
+    padding: 6px 12px;
+    background: rgba(0, 0, 0, 0.45);
+    color: #fff;
+    font-family: 'Space Grotesk', 'Inter', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    border-radius: 6px;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
 .fade { animation: fade 1.5s; }
 @keyframes fade { from { opacity: 0.4 } to { opacity: 1 } }
 .dot-container { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); }
