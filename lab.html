@@ -21,19 +21,19 @@
 
     <div class="section">
         <div class="slideshow-container">
-            <div class="mySlides fade">
+            <div class="mySlides">
                 <img src="assets/23fall_group_build.jpg" alt="Group Photo">
                 <div class="slide-caption">Fall 2023</div>
             </div>
-            <div class="mySlides fade">
+            <div class="mySlides">
                 <img src="assets/24fall_group_build.JPG" alt="Group Photo">
                 <div class="slide-caption">Fall 2024</div>
             </div>
-            <div class="mySlides fade">
+            <div class="mySlides">
                 <img src="assets/25Dec_group.JPG" alt="Group Photo">
                 <div class="slide-caption">Fall 2025</div>
             </div>
-            <div class="mySlides fade">
+            <div class="mySlides">
                 <img src="assets/26May_group.JPG" alt="Group Photo">
                 <div class="slide-caption">Spring 2026</div>
             </div>
@@ -202,20 +202,21 @@
             });
         });
 
-        // Slideshow JS
+        // Slideshow JS — crossfade with Ken Burns
         let slideIndex = 0;
         let slideTimer = null;
+        const SLIDE_INTERVAL = 5000;
         function showSlides() {
             if (slideTimer) { clearTimeout(slideTimer); slideTimer = null; }
-            let slides = document.querySelectorAll('.mySlides');
-            let dots = document.querySelectorAll('.dot');
-            slides.forEach(slide => slide.style.display = 'none');
+            const slides = document.querySelectorAll('.mySlides');
+            const dots = document.querySelectorAll('.dot');
             slideIndex++;
             if (slideIndex > slides.length) slideIndex = 1;
-            slides[slideIndex - 1].style.display = 'block';
+            slides.forEach(slide => slide.classList.remove('active'));
+            slides[slideIndex - 1].classList.add('active');
             dots.forEach(dot => dot.classList.remove('active'));
             dots[slideIndex - 1].classList.add('active');
-            slideTimer = setTimeout(showSlides, 3000);
+            slideTimer = setTimeout(showSlides, SLIDE_INTERVAL);
         }
         function currentSlide(n) { slideIndex = n - 1; showSlides(); }
         showSlides();
